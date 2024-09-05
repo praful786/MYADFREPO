@@ -5,8 +5,20 @@
 		"factoryName": {
 			"value": "MYFirstADFGURU"
 		},
+		"AzureSqlDatabase_tbl_password": {
+			"value": ""
+		},
 		"blb_storage_azure_connectionString": {
 			"value": ""
+		},
+		"AzureSqlDatabase_tbl_properties_typeProperties_server": {
+			"value": "mymasterserver.database.windows.net"
+		},
+		"AzureSqlDatabase_tbl_properties_typeProperties_database": {
+			"value": "GURU"
+		},
+		"AzureSqlDatabase_tbl_properties_typeProperties_userName": {
+			"value": "Prafful"
 		}
 	}
 }
