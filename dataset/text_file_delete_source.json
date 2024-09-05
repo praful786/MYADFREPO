@@ -1,0 +1,17 @@
+{
+	"name": "text_file_delete_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blb_storage_azure",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "source"
+			}
+		}
+	}
+}
