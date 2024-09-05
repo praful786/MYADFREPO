@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "MYFirstADFGURU"
 		},
+		"blb_storage_azure_connectionString": {
+			"value": ""
+		},
 		"containerUri": {
 			"value": ""
 		},
