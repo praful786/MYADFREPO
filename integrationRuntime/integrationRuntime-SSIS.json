@@ -1,0 +1,32 @@
+{
+	"name": "integrationRuntime-SSIS",
+	"properties": {
+		"type": "Managed",
+		"description": "ssis managed instance",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "Central India",
+				"nodeSize": "Standard_D8_v3",
+				"numberOfNodes": 1,
+				"maxParallelExecutionsPerNode": 8,
+				"vNetProperties": {
+					"subnetId": "/subscriptions/3d6d9471-4732-4db8-8c25-7f5e5d0301ac/resourceGroups/LearnADFResource/providers/Microsoft.Network/virtualNetworks/prafful_VN/subnets/prafful-adf"
+				}
+			},
+			"ssisProperties": {
+				"catalogInfo": {
+					"catalogServerEndpoint": "mymasterserver.database.windows.net",
+					"catalogAdminUserName": "Prafful",
+					"catalogAdminPassword": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"catalogPricingTier": "S1"
+				},
+				"edition": "Standard",
+				"runtimeVersion": "2017",
+				"licenseType": "LicenseIncluded"
+			}
+		}
+	}
+}
