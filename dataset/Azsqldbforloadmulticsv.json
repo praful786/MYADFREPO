@@ -1,0 +1,23 @@
+{
+	"name": "Azsqldbforloadmulticsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_tbl",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
