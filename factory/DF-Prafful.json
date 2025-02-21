@@ -1,0 +1,9 @@
+{
+	"name": "DF-Prafful",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "620f9de2-d39a-457c-88e6-b732a06d3463",
+		"tenantId": "f4785c8f-b46b-4241-aa3e-e7fbc2d0789b"
+	}
+}
