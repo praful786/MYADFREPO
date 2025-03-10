@@ -1,5 +1,5 @@
 {
-	"name": "dataflowexceltotable",
+	"name": "dataflowupsertoperation",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,7 +9,7 @@
 						"referenceName": "AzureBlobStorage",
 						"type": "LinkedServiceReference"
 					},
-					"name": "excelsource"
+					"name": "excelsourceupsert"
 				}
 			],
 			"sinks": [
@@ -18,12 +18,12 @@
 						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sinkazuredbtable"
 				}
 			],
 			"transformations": [
 				{
-					"name": "derivedLoadedDate"
+					"name": "alterRow1"
 				}
 			],
 			"scriptLines": [
@@ -34,18 +34,20 @@
 				"     container: 'myexcel',",
 				"     fileName: 'employ.xlsx',",
 				"     sheetName: 'Sheet1',",
-				"     firstRowAsHeader: true) ~> excelsource",
-				"excelsource derive(LoadedDate = currentDate()) ~> derivedLoadedDate",
-				"derivedLoadedDate sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     firstRowAsHeader: true) ~> excelsourceupsert",
+				"excelsourceupsert alterRow(upsertIf(true())) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
-				"     upsertable:false,",
+				"     upsertable:true,",
+				"     keys:['emp_id'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sinkazuredbtable"
 			]
 		}
 	}
