@@ -1,6 +1,0 @@
-{
-	"name": "pipeline for upsert excel to table",
-	"properties": {
-		"annotations": []
-	}
-}
