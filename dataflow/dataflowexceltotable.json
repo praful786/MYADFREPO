@@ -24,10 +24,19 @@
 			"transformations": [
 				{
 					"name": "derivedLoadedDate"
+				},
+				{
+					"name": "alterRow1"
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          emp_id as short,",
+				"          emp_name as string,",
+				"          emp_salary as integer,",
+				"          emp_department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     format: 'excel',",
@@ -36,12 +45,14 @@
 				"     sheetName: 'Sheet1',",
 				"     firstRowAsHeader: true) ~> excelsource",
 				"excelsource derive(LoadedDate = currentDate()) ~> derivedLoadedDate",
-				"derivedLoadedDate sink(allowSchemaDrift: true,",
+				"derivedLoadedDate alterRow(upsertIf(true())) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
-				"     upsertable:false,",
+				"     upsertable:true,",
+				"     keys:['emp_id'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
